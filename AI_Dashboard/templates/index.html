@@ -1,0 +1,477 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <title>
+            {% block title %}
+                page title will replace it
+            {% endblock %}
+        </title>
+        <!-- javascript for 3D pi chart -->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load("current", {packages:["corechart"]});
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                    ['Task', 'Predication'],
+                    ['Male', {{ male }}],
+                    ['Female', {{ female }}]
+                ]);
+
+            var options = {
+                title: 'Predication of Who Like The University Most',
+                is3D: true,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+            chart.draw(data, options);
+            }
+        </script>
+
+        <!-- barchart for guidline -->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script type="text/javascript">
+    google.charts.load("current", {packages:['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var guidline = {{ guidline }};
+        var five = guidline[0];
+        var foure = guidline[1];
+        var three = guidline[2];
+        var two = guidline[3];
+        var one = guidline[4];
+      var data = google.visualization.arrayToDataTable([
+        ["", "", { role: "style" } ],
+        ["5", five, "#b87333"],
+        ["4", foure, "silver"],
+        ["3", three, "gold"],
+        ["2", two, "color: #e5e4e2"],
+        ["1", one, "color: #FA5858"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Rating of Department Guidline",
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+         hAxis: {
+          title: 'Student Number',
+          minValue: 0,
+        },
+        vAxis: {
+          title: 'Rating'
+        },
+        bars: 'horizontal',
+      };
+      var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
+      chart.draw(view, options);
+  }
+  </script>
+
+  <!-- barchart for conducive learning environment -->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var conducive = {{ conducive }};
+        var five = conducive[0];
+        var foure = conducive[1];
+        var three = conducive[2];
+        var two = conducive[3];
+        var one = conducive[4];
+      var data = google.visualization.arrayToDataTable([
+        ["Element", "Density", { role: "style" } ],
+        ["5", five, "#b87333"],
+        ["4", foure, "silver"],
+        ["3", three, "gold"],
+        ["2", two, "color: #e5e4e2"],
+        ["1", one, "color: #FA5858"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Rating for conducive learning environment",
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+         hAxis: {
+          title: 'Student Number',
+          minValue: 0,
+        },
+        vAxis: {
+          title: 'Rating'
+        },
+        bars: 'horizontal',
+      };
+      var chart = new google.visualization.BarChart(document.getElementById("cond_learn"));
+      chart.draw(view, options);
+  }
+  </script>
+
+  <!-- barchart for decision taken fairness -->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var decision = {{ decision }};
+        var five = decision[0];
+        var foure = decision[1];
+        var three = decision[2];
+        var two = decision[3];
+        var one = decision[4];
+      var data = google.visualization.arrayToDataTable([
+        ["Element", "Density", { role: "style" } ],
+        ["5", five, "#b87333"],
+        ["4", foure, "silver"],
+        ["3", three, "gold"],
+        ["2", two, "color: #e5e4e2"],
+        ["1", one, "color: #FA5858"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Rating for Decision Fairness",
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+         hAxis: {
+          title: 'Student Number',
+          minValue: 0,
+        },
+        vAxis: {
+          title: 'Rating'
+        },
+        bars: 'horizontal',
+      };
+      var chart = new google.visualization.BarChart(document.getElementById("decision_fairness"));
+      chart.draw(view, options);
+  }
+  </script>
+
+  <!-- barchart for academic calender maintance -->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var calender = {{ calender }};
+        var five = calender[0];
+        var foure = calender[1];
+        var three = calender[2];
+        var two = calender[3];
+        var one = calender[4];
+      var data = google.visualization.arrayToDataTable([
+        ["Element", "Density", { role: "style" } ],
+        ["5", five, "#b87333"],
+        ["4", foure, "silver"],
+        ["3", three, "gold"],
+        ["2", two, "color: #e5e4e2"],
+        ["1", one, "color: #FA5858"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Rating for Calender Maintance",
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+         hAxis: {
+          title: 'Student Number',
+          minValue: 0,
+        },
+        vAxis: {
+          title: 'Rating'
+        },
+        bars: 'horizontal',
+      };
+      var chart = new google.visualization.BarChart(document.getElementById("calender_maint"));
+      chart.draw(view, options);
+  }
+  </script>
+
+  <!-- barchart for result publishing -->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var result = {{ result }};
+        var five = result[0];
+        var foure = result[1];
+        var three = result[2];
+        var two = result[3];
+        var one = result[4];
+      var data = google.visualization.arrayToDataTable([
+        ["Element", "Density", { role: "style" } ],
+        ["5", five, "#b87333"],
+        ["4", foure, "silver"],
+        ["3", three, "gold"],
+        ["2", two, "color: #e5e4e2"],
+        ["1", one, "color: #FA5858"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Rating for Result Publishing",
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+         hAxis: {
+          title: 'Student Number',
+          minValue: 0,
+        },
+        vAxis: {
+          title: 'Rating'
+        },
+        bars: 'horizontal',
+      };
+      var chart = new google.visualization.BarChart(document.getElementById("result_publish"));
+      chart.draw(view, options);
+  }
+  </script>
+
+  <!-- barchart for Opinion address -->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var opinion = {{ opinion }};
+        var five = opinion[0];
+        var foure = opinion[1];
+        var three = opinion[2];
+        var two = opinion[3];
+        var one = opinion[4];
+      var data = google.visualization.arrayToDataTable([
+        ["Element", "Density", { role: "style" } ],
+        ["5", five, "#b87333"],
+        ["4", foure, "silver"],
+        ["3", three, "gold"],
+        ["2", two, "color: #e5e4e2"],
+        ["1", one, "color: #FA5858"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Rating for Addressing Student Opinions",
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+         hAxis: {
+          title: 'Student Number',
+          minValue: 0,
+        },
+        vAxis: {
+          title: 'Rating'
+        },
+        bars: 'horizontal',
+      };
+      var chart = new google.visualization.BarChart(document.getElementById("opinion_address"));
+      chart.draw(view, options);
+  }
+  </script>
+
+  <!-- barchart for feedback applyed -->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    
+    function drawChart() {
+        var feedback = {{ feedback }};
+        var five = feedback[0];
+        var foure = feedback[1];
+        var three = feedback[2];
+        var two = feedback[3];
+        var one = feedback[4];
+      var data = google.visualization.arrayToDataTable([
+        ["Element", "Density", { role: "style" } ],
+        ["5", five, "#b87333"],
+        ["4", foure, "silver"],
+        ["3", three, "gold"],
+        ["2", two, "color: #e5e4e2"],
+        ["1", one, "color: #FA5858"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Rating for Student Feedback Addressed",
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+         hAxis: {
+          title: 'Student Number',
+          minValue: 0,
+        },
+        vAxis: {
+          title: 'Rating'
+        },
+        bars: 'horizontal',
+      };
+      var chart = new google.visualization.BarChart(document.getElementById("feedback_applyed"));
+      chart.draw(view, options);
+  }
+  </script>
+
+  <!-- barchart for website -->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var website = {{ website }};
+        var five = website[0];
+        var foure = website[1];
+        var three = website[2];
+        var two = website[3];
+        var one = website[4];
+      var data = google.visualization.arrayToDataTable([
+        ["Element", "Density", { role: "style" } ],
+        ["5", five, "#b87333"],
+        ["4", foure, "silver"],
+        ["3", three, "gold"],
+        ["2", two, "color: #e5e4e2"],
+        ["1", one, "color: #FA5858"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Rating for Informative and Up-to-Date Website",
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+         hAxis: {
+          title: 'Student Number',
+          minValue: 0,
+        },
+        vAxis: {
+          title: 'Rating'
+        },
+        bars: 'horizontal',
+      };
+      var chart = new google.visualization.BarChart(document.getElementById("website_rating"));
+      chart.draw(view, options);
+  }
+  </script>
+
+  <!-- barchart for curriculum load -->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    
+    function drawChart() {
+        var curriculum = {{ curriculum }};
+        var five = curriculum[0];
+        var foure = curriculum[1];
+        var three = curriculum[2];
+        var two = curriculum[3];
+        var one = curriculum[4];
+      var data = google.visualization.arrayToDataTable([
+        ["Element", "Density", { role: "style" } ],
+        ["5", five, "#b87333"],
+        ["4", foure, "silver"],
+        ["3", three, "gold"],
+        ["2", two, "color: #e5e4e2"],
+        ["1", one, "color: #FA5858"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Rating for Curriculum Load",
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+         hAxis: {
+          title: 'Student Number',
+          minValue: 0,
+        },
+        vAxis: {
+          title: 'Rating'
+        },
+        bars: 'horizontal',
+      };
+      var chart = new google.visualization.BarChart(document.getElementById("curriculum_load"));
+      chart.draw(view, options);
+  }
+  </script>
+
+
+        </head>
+<body>
+    <!-- nevigation bar -->
+    {% include 'nav.html' %}
+
+    <!-- Content will go here -->
+
+    {% block content %}
+    content will come here
+    {% endblock %}
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>
